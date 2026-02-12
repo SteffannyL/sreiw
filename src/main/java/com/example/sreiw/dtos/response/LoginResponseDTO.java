@@ -1,8 +1,8 @@
 package com.example.sreiw.dtos.response;
 
-public class UsuarioResponseDTO {
+public class LoginResponseDTO {
 
-    public Integer id;
+    public Integer idUsuario;
     public String nombres;
     public Integer tipoUsuario;
 }
