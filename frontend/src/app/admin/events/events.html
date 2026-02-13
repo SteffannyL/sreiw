@@ -1,0 +1,93 @@
+<div class="users-container">
+
+  <h2>Administración de eventos</h2>
+
+  <!-- HEADER / FILTROS -->
+  <div class="users-header">
+  <div class="filters">
+    <button
+      class="filter-btn"
+      [class.active]="filtroActual === 'activo'"
+      (click)="aplicarFiltro('activo')">
+      Activos
+    </button>
+
+    <button
+      class="filter-btn"
+      [class.active]="filtroActual === 'unDia'"
+      (click)="aplicarFiltro('unDia')">
+      Un día
+    </button>
+
+    <button
+      class="filter-btn"
+      [class.active]="filtroActual === 'auditorio'"
+      (click)="aplicarFiltro('auditorio')">
+      Auditorio
+    </button>
+  </div>
+
+  <a class="btn create" href="/admin/events/new">
+    + Crear evento
+  </a>
+</div>
+
+
+  <!-- TABLA -->
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Evento</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+        <th>Lugar</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (e of eventosMostrados; track e.id) {
+        <tr>
+          <td>{{ e.id }}</td>
+
+          <td>
+            {{ nombreEventoMayusculas(e) }}
+          </td>
+
+          <td>
+            {{ e.fechaInicio | date:'yyyy-MM-dd' }}
+          </td>
+
+          <td>
+            {{ e.fechaFin | date:'yyyy-MM-dd' }}
+          </td>
+
+          <td>
+            {{ lugarMinusculas(e) }}
+          </td>
+
+          <td
+            [class.activo]="e.activo"
+            [class.inactivo]="!e.activo">
+            {{ e.activo ? 'Activo' : 'Inactivo' }}
+          </td>
+
+          <td>
+            <a
+              class="btn edit"
+              href="/admin/events/edit/{{ e.id }}">
+              Editar
+            </a>
+
+            <button class="btn disable">
+              Desactivar
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+</div>

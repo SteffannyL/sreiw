@@ -1,0 +1,74 @@
+<div class="users-container">
+
+  <div class="users-header">
+    <h2>Administración de usuarios</h2>
+
+    <div class="actions">
+      <button class="btn logout" (click)="logout()">
+        Cerrar sesión
+      </button>
+
+      <a routerLink="/admin/users/new" class="btn create">
+        + Crear usuario
+      </a>
+    </div>
+  </div>
+
+  <table class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Correo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{ u.idUsuario }}</td>
+        <td>{{ u.correo }}</td>
+
+        <td
+          [ngClass]="{
+            activo: u.activo,
+            inactivo: !u.activo
+          }"
+        >
+          {{ u.activo ? 'Activo' : 'Inactivo' }}
+        </td>
+
+        <td>
+          <a
+            [routerLink]="['/admin/users/edit', u.idUsuario]"
+            class="btn edit"
+          >
+            Editar
+          </a>
+
+          <button
+            *ngIf="u.activo"
+            class="btn disable"
+          >
+            Desactivar
+          </button>
+
+          <button
+            *ngIf="!u.activo"
+            class="btn enable"
+          >
+            Activar
+          </button>
+        </td>
+      </tr>
+
+      <!-- Cuando no hay usuarios -->
+      <tr *ngIf="usuarios.length === 0">
+        <td colspan="4" style="text-align: center;">
+          No hay usuarios registrados
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
