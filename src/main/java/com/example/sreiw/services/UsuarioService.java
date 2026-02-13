@@ -1,52 +1,39 @@
 package com.example.sreiw.services;
 
-import com.example.sreiw.dtos.request.CrearUsuarioRequestDTO;
-import com.example.sreiw.dtos.request.LoginRequestDTO;
-import com.example.sreiw.dtos.response.UsuarioResponseDTO;
+import com.example.sreiw.entities.Usuario;
 import com.example.sreiw.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioService {
 
-    private final UsuarioRepository repo;
+    private final UsuarioRepository repository;
 
-    public UsuarioService(UsuarioRepository repo) {
-        this.repo = repo;
+    public UsuarioService(UsuarioRepository repository) {
+        this.repository = repository;
     }
 
-    public void crearUsuario(CrearUsuarioRequestDTO dto) {
-        repo.crearUsuario(
-                dto.id, dto.tipoUsuario,
-                dto.nombres, dto.apellidos,
-                dto.correo, dto.contrasena
-        );
+    public Optional<Usuario> login(String correo, String contrasena) {
+        correo = correo.trim();
+        contrasena = contrasena.trim();
+
+        Optional<Usuario> usuarioOpt = repository.findByCorreo(correo);
+
+        if (usuarioOpt.isEmpty()) return Optional.empty();
+
+        Usuario usuario = usuarioOpt.get();
+
+        if (!usuario.getContrasena().trim().equals(contrasena)) return Optional.empty();
+        if (!Boolean.TRUE.equals(usuario.getActivo())) return Optional.empty();
+
+        return Optional.of(usuario);
     }
 
-    public UsuarioResponseDTO login(LoginRequestDTO dto) {
-        Object[] r = repo.login(dto.correo, dto.contrasena).get(0);
-
-        UsuarioResponseDTO u = new UsuarioResponseDTO();
-        u.id = (Integer) r[0];
-        u.nombres = (String) r[1];
-        u.tipoUsuario = (Integer) r[2];
-
-        return u;
-    }
-
-    public List<UsuarioResponseDTO> listarUsuarios() {
-        return repo.listarUsuarios().stream().map(r -> {
-            UsuarioResponseDTO u = new UsuarioResponseDTO();
-            u.id = (Integer) r[0];
-            u.nombres = (String) r[1];
-            u.tipoUsuario = (Integer) r[2];
-            return u;
-        }).toList();
-    }
-
-    public void desactivar(Integer id) {
-        repo.desactivarUsuario(id);
+    // 🔹 ESTE MÉTODO FALTABA
+    public List<Usuario> listar() {
+        return repository.findAll();
     }
 }

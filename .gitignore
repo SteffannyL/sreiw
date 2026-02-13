@@ -1,43 +1,35 @@
-HELP.md
+############################
+# ANGULAR
+############################
+node_modules/
+dist/
+.angular/
+coverage/
+
+############################
+# SPRING BOOT
+############################
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+*.class
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+############################
+# IDE
+############################
 .vscode/
+.idea/
 
-# ===== Maven / Java =====
-target/
+############################
+# LOGS
+############################
 *.log
 
-# ===== Angular =====
-frontend/node_modules/
-frontend/dist/
-frontend/.angular/
-frontend/.vscode/
+############################
+# OS
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# ENV FILES (si usas)
+############################
+.env
