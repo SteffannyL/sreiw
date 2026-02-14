@@ -1,0 +1,57 @@
+<div class="login-container">
+
+  <form
+    class="login-form"
+    [formGroup]="eventForm"
+    (ngSubmit)="submit()">
+
+    <h2>Evento</h2>
+
+    <input
+      type="text"
+      placeholder="Nombre del evento"
+      formControlName="nombre_evento"
+    />
+
+    <textarea
+      placeholder="Descripción del evento"
+      formControlName="descripcion">
+    </textarea>
+
+    <input
+      type="date"
+      formControlName="fecha_inicio"
+    />
+
+    <input
+      type="date"
+      formControlName="fecha_fin"
+    />
+
+    <input
+      type="text"
+      placeholder="Lugar"
+      formControlName="lugar"
+    />
+
+    <input
+      type="text"
+      placeholder="Aforo"
+      formControlName="aforo"
+    />
+
+    <input
+      type="number"
+      placeholder="Tipo de evento"
+      formControlName="id_tipoevento"
+    />
+
+    <button
+      type="submit"
+      [disabled]="eventForm.invalid">
+      Guardar
+    </button>
+
+  </form>
+
+</div>

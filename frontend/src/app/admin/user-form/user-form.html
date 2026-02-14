@@ -1,0 +1,48 @@
+<div class="user-form-container">
+
+  <h2>Crear / Editar usuario</h2>
+
+  <form class="user-form">
+
+    <label>
+      Nombre completo
+      <input type="text" placeholder="Nombre del usuario" />
+    </label>
+
+    <label>
+      Correo electrónico
+      <input type="email" placeholder="correo@ejemplo.com" />
+    </label>
+
+    <label>
+      Rol
+      <select>
+        <option>Administrador</option>
+         <option>Decano</option>
+          <option>Coordinador/a</option>
+           <option>Docente</option>
+            <option>Asistente</option>
+      </select>
+    </label>
+
+    <label>
+      Estado
+      <select>
+        <option>Activo</option>
+        <option>Inactivo</option>
+      </select>
+    </label>
+
+    <label>
+      Contraseña
+      <input type="password" placeholder="Contraseña" />
+    </label>
+
+    <div class="form-actions">
+      <button class="btn save">Guardar</button>
+      <a href="/admin/users" class="btn cancel">Cancelar</a>
+    </div>
+
+  </form>
+
+</div>

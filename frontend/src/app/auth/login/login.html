@@ -1,0 +1,48 @@
+<div class="login-container">
+ <form class="login-form"
+      [formGroup]="loginForm"
+      (ngSubmit)="submit()">
+
+<img src="/logo-uteq.png" class="logo" />
+
+    <h2>Iniciar sesión</h2>
+    @if (loginError) {
+  <div class="login-error">
+    Usuario o contraseña incorrectos
+  </div>
+}
+    <input
+  type="email"
+  placeholder="Correo electrónico"
+  formControlName="email"
+  name="email"
+  autocomplete="email"
+/>
+    @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+  <small class="error">Ingresa un correo válido</small>
+}
+    <input
+      type="password"
+      placeholder="Contraseña"
+      formControlName="password"
+    />
+    @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+  <small class="error">La contraseña es obligatoria</small>
+}
+
+  <button type="submit" [disabled]="loading">
+  @if (loading) {
+    Cargando...
+  } @else {
+    Entrar
+  }
+</button>
+
+<p class="switch">
+  ¿No tiene cuenta?
+  <a href="/register">Registrarse</a>
+</p>
+
+
+  </form>
+</div>

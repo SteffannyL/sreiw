@@ -1,0 +1,83 @@
+/* ===== CONTENEDOR ===== */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e6f7f6, #f7fffe);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== TARJETA ===== */
+.login-form {
+  background: #ffffff;
+  width: 380px;
+  padding: 2.2rem;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(46, 196, 182, 0.35);
+}
+
+/* ===== TÍTULO ===== */
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 1.8rem;
+  color: #1b7f79;
+  font-size: 1.6rem;
+}
+
+/* ===== INPUTS ===== */
+.login-form input,
+.login-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1.5px solid #cdeeed;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* textarea un poco más elegante */
+.login-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* focus */
+.login-form input:focus,
+.login-form textarea:focus {
+  border-color: #2ec4b6;
+  box-shadow: 0 0 0 3px rgba(46, 196, 182, 0.15);
+}
+
+/* ===== FECHAS EN GRID ===== */
+.login-form input[type="date"] {
+  cursor: pointer;
+}
+
+/* ===== BOTÓN ===== */
+.login-form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2ec4b6, #1b7f79);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.login-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(46, 196, 182, 0.45);
+}
+
+.login-form button:disabled {
+  background: #bde5e2;
+  cursor: not-allowed;
+  box-shadow: none;
+}
