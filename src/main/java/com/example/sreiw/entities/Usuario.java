@@ -1,6 +1,7 @@
 package com.example.sreiw.entities;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuario")
@@ -8,49 +9,25 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idusuario")
-    private Long idUsuario;
+    private Long idusuario;
 
-    @Column(name = "correo")
+    private Long idtipousuario;
+    private String nombres;
+    private String apellidos;
     private String correo;
-
-    @Column(name = "contrasena")
     private String contrasena;
-
-    @Column(name = "activo")
     private Boolean activo;
+    private LocalDateTime fecharegistro;
+    private Long idempresa;
 
-    /* ===== GETTERS Y SETTERS ===== */
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
+    public Long getIdusuario() { return idusuario; }
+    public String getNombres() { return nombres; }
+    public String getCorreo() { return correo; }
+    public String getContrasena() { return contrasena; }
+    public Boolean getActivo() { return activo; }
+    public Long getIdtipousuario() { return idtipousuario; }
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
-    }
-
-    public Boolean getActivo() {
-        return activo;
-    }
-
-    public void setActivo(Boolean activo) {
-        this.activo = activo;
     }
 }

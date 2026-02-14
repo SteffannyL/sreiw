@@ -1,7 +1,5 @@
 package com.example.sreiw.repositories;
 
-import com.example.sreiw.dtos.response.LoginResponseDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,17 +14,27 @@ public class AuthRepository {
         this.jdbc = jdbc;
     }
 
-    public LoginResponseDTO login(String correo, String contrasena) {
-        return jdbc.queryForObject(
-                "SELECT * FROM fn_login_usuario(?,?)",
-                (rs, rowNum) -> {
-                    LoginResponseDTO dto = new LoginResponseDTO();
-                    dto.idUsuario = rs.getInt("id_usuario");
-                    dto.nombres = rs.getString("nombres");
-                    dto.tipoUsuario = rs.getInt("id_tipousuario");
-                    return dto;
-                },
-                correo, contrasena
+    public Map<String, Object> buscarPorCorreo(String correo) {
+        return jdbc.queryForMap(
+                "SELECT * FROM fnloginusuario(?)",
+                correo
         );
     }
+    public void insertarUsuario(
+        String nombres,
+        String apellidos,
+        String correo,
+        String contrasena,
+        int idTipoUsuario) {
+
+    jdbc.update(
+        "CALL spcrearusuario(?,?,?,?,?)",
+        nombres,
+        apellidos,
+        correo,
+        contrasena,
+        idTipoUsuario
+    );
+}
+
 }

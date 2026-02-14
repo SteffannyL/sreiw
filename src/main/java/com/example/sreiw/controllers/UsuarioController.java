@@ -27,7 +27,6 @@ public class UsuarioController {
         return service.listar();
     }
 
-    /* ===== LOGIN ===== */
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequestDTO dto) {
 

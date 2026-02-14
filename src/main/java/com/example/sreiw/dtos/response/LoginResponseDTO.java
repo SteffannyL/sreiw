@@ -1,8 +1,7 @@
 package com.example.sreiw.dtos.response;
 
 public class LoginResponseDTO {
-
-    public Integer idUsuario;
+    public Long idusuario;
     public String nombres;
-    public Integer tipoUsuario;
+    public Long idtipousuario;
 }
