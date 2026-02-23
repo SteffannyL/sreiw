@@ -3,7 +3,7 @@ package com.example.sreiw.dtos.request;
 public class RegistroUsuarioRequestDTO {
 
     public Integer id;
-    public Integer tipoUsuario;   // 1 = externo, 2 = estudiante, 3 = docente
+    public Integer tipoUsuario;
     public Integer facultad;
     public Integer carrera;
 

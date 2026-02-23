@@ -10,7 +10,7 @@ public class CrearUsuarioRequestDTO {
     public String contrasena;
     public Integer facultad;
     public Integer carrera;
-    // GETTERS
+
     public Integer getId() {
         return id;
     }

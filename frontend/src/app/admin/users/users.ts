@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../core/services/usuario-admin.service';
-import { Router } from '@angular/router';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -16,13 +15,25 @@ export class Users implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef   // 👈 agregado
   ) {}
 
   ngOnInit(): void {
+    this.cargarUsuarios();
+  }
+
+  cargarUsuarios(): void {
     this.usuarioService.listar().subscribe({
       next: (data: any[]) => {
-        this.usuarios = data;
+
+        console.log("Usuarios recibidos:", data);
+
+        // 👇 FORZAMOS nueva referencia
+        this.usuarios = [...data];
+
+        // 👇 Forzamos detección de cambios
+        this.cdr.detectChanges();
       },
       error: err => {
         console.error('Error cargando usuarios', err);
