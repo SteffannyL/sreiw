@@ -1,65 +1,108 @@
-.user-form-container {
-  max-width: 500px;
-  margin: 2rem auto;
+/* Fondo general */
+.form-wrapper {
+  min-height: 100vh;
+  background-color: #f5f7f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Card */
+.form-card {
   background: white;
-  padding: 2rem;
-  border-radius: 14px;
-  box-shadow: 0 15px 35px rgba(46, 196, 182, 0.25);
-  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 30px;
 }
 
-.user-form-container h2 {
+/* Header */
+.form-header {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #1b7f79;
+  margin-bottom: 25px;
 }
 
-.user-form label {
+.form-header h2 {
+  color: #2fa89b;
+  font-weight: 600;
+}
+
+/* Grupo */
+.form-group {
+  margin-bottom: 18px;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
-  margin-bottom: 12px;
-  color: #333;
 }
 
-.user-form input,
-.user-form select {
-  margin-top: 6px;
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-group input,
+.form-group select {
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #cceceb;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2fa89b;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(47, 168, 155, 0.15);
 }
 
-.user-form input:focus,
-.user-form select:focus {
-  border-color: #2ec4b6;
-  box-shadow: 0 0 0 2px rgba(46, 196, 182, 0.25);
+/* Texto pequeño */
+.hint {
+  font-size: 12px;
+  color: #888;
+  margin-left: 5px;
 }
 
-.form-actions {
+/* Botones */
+.form-buttons {
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  margin-top: 1.5rem;
 }
 
 .btn {
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: 10px 18px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
+/* Guardar */
 .btn.save {
-  background: #2ec4b6;
+  background-color: #2fa89b;
   color: white;
-  font-weight: bold;
 }
 
+.btn.save:hover {
+  background-color: #249084;
+}
+
+/* Cancelar */
 .btn.cancel {
-  background: #ccc;
-  color: #333;
+  background-color: #e0e0e0;
+  color: #444;
+}
+
+.btn.cancel:hover {
+  background-color: #c9c9c9;
+}
+
+/* Botón deshabilitado */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

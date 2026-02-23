@@ -1,95 +1,91 @@
-<div class="form-container">
+<div class="form-wrapper">
 
-  <h2>{{ titulo }}</h2>
+  <div class="form-card">
 
-  <form (ngSubmit)="guardar()" #form="ngForm">
-
-    <!-- Nombre -->
-    <label>Nombre completo</label>
-    <input
-      type="text"
-      [(ngModel)]="usuario.nombres"
-      name="nombres"
-      required
-      #nombres="ngModel"
-    />
-    <small *ngIf="nombres.invalid && nombres.touched">
-      El nombre es obligatorio
-    </small>
-
-    <!-- Correo -->
-    <label>Correo</label>
-    <input
-      type="email"
-      [(ngModel)]="usuario.correo"
-      name="correo"
-      required
-      email
-      #correo="ngModel"
-    />
-    <small *ngIf="correo.invalid && correo.touched">
-      Ingrese un correo válido
-    </small>
-
-    <!-- Rol -->
-    <label>Rol</label>
-    <select
-      [(ngModel)]="usuario.idtipousuario"
-      name="rol"
-      required
-    >
-      <option [ngValue]="1">Administrador</option>
-      <option [ngValue]="2">Externo</option>
-    </select>
-
-    <!-- Estado (solo en edición) -->
-    <div *ngIf="esEdicion">
-      <label>Estado</label>
-      <select
-        [(ngModel)]="usuario.activo"
-        name="activo"
-      >
-        <option [ngValue]="true">Activo</option>
-        <option [ngValue]="false">Inactivo</option>
-      </select>
+    <div class="form-header">
+      <h2>{{ titulo }}</h2>
     </div>
 
-    <!-- Contraseña -->
-    <label>
-      Contraseña
-      <span *ngIf="esEdicion">(Dejar vacío para no cambiar)</span>
-    </label>
-    <input
-      type="password"
-      [(ngModel)]="usuario.contrasena"
-      name="contrasena"
-      [required]="!esEdicion"
-      minlength="4"
-      #contrasena="ngModel"
-    />
-    <small *ngIf="contrasena.invalid && contrasena.touched">
-      Mínimo 4 caracteres
-    </small>
+    <form (ngSubmit)="guardar()" #form="ngForm">
 
-    <!-- Botones -->
-    <div class="buttons">
-      <button
-        type="submit"
-        class="btn save"
-        [disabled]="form.invalid"
-      >
-        Guardar
-      </button>
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input
+          type="text"
+          [(ngModel)]="usuario.nombres"
+          name="nombres"
+          required
+        />
+      </div>
 
-      <button
-        type="button"
-        (click)="cancelar()"
-        class="btn cancel"
-      >
-        Cancelar
-      </button>
-    </div>
+      <div class="form-group">
+        <label>Correo</label>
+        <input
+          type="email"
+          [(ngModel)]="usuario.correo"
+          name="correo"
+          required
+        />
+      </div>
 
-  </form>
+      <div class="form-group">
+        <label>Rol</label>
+        <select
+          [(ngModel)]="usuario.idtipousuario"
+          name="rol"
+        >
+          <option [ngValue]="1">Administrador</option>
+          <option [ngValue]="2">Externo</option>
+        </select>
+      </div>
+
+      <div class="form-group" *ngIf="esEdicion">
+        <label>Estado</label>
+        <select
+          [(ngModel)]="usuario.activo"
+          name="activo"
+        >
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>
+          Contraseña
+          <span *ngIf="esEdicion" class="hint">
+            (Dejar vacío para no cambiar)
+          </span>
+        </label>
+
+        <input
+          type="password"
+          [(ngModel)]="usuario.contrasena"
+          name="contrasena"
+          [required]="!esEdicion"
+        />
+      </div>
+
+      <div class="form-buttons">
+        <button
+          type="submit"
+          class="btn save"
+          [disabled]="form.invalid"
+        >
+          Guardar
+        </button>
+
+        <button
+          type="button"
+          class="btn cancel"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
+      </div>
+
+    </form>
+
+  </div>
 
 </div>
