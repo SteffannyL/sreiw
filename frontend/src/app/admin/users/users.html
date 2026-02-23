@@ -1,56 +1,69 @@
-<div class="users-container">
+<div class="admin-layout">
 
-  <div class="users-header">
-    <h2>Administración de usuarios</h2>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2 class="logo">Admin</h2>
 
-    <div class="actions">
-      <button class="btn logout" (click)="logout()">
-        Cerrar sesión
-      </button>
+    <nav>
+      <a routerLink="/admin/users" routerLinkActive="active">
+        👤 Usuarios
+      </a>
+
+      <a routerLink="/admin/events" routerLinkActive="active">
+        📅 Eventos
+      </a>
+
+      <a (click)="logout()">
+        🚪 Cerrar sesión
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+
+    <div class="top-bar">
+      <h2>Administración de usuarios</h2>
 
       <a routerLink="/admin/users/new" class="btn create">
         + Crear usuario
       </a>
     </div>
-  </div>
-  <table class="users-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Correo</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
 
-    <tbody>
+    <table class="users-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
 
-      <tr *ngFor="let u of usuarios">
-        <td>{{ u.idusuario }}</td>
-        <td>{{ u.nombres }}</td>
-        <td>{{ u.correo }}</td>
+      <tbody>
 
-        <td [ngClass]="u.activo ? 'activo' : 'inactivo'">
-          {{ u.activo ? 'Activo' : 'Inactivo' }}
-        </td>
+        <tr *ngFor="let u of usuarios">
+          <td>{{ u.idusuario }}</td>
+          <td>{{ u.nombres }}</td>
+          <td>{{ u.correo }}</td>
 
-        <td>
-          <a 
-            [routerLink]="['/admin/users/edit', u.idusuario]" 
-            class="btn edit">
-            Editar
-          </a>
-        </td>
-      </tr>
+          <td [ngClass]="u.activo ? 'activo' : 'inactivo'">
+            {{ u.activo ? 'Activo' : 'Inactivo' }}
+          </td>
 
-      <tr *ngIf="usuarios.length === 0">
-        <td colspan="5" style="text-align:center;">
-          No hay usuarios registrados
-        </td>
-      </tr>
+          <td>
+            <a
+              [routerLink]="['/admin/users/edit', u.idusuario]"
+              class="btn edit">
+              Editar
+            </a>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+
+  </main>
 
 </div>

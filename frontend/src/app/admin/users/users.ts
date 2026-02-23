@@ -45,4 +45,9 @@ export class Users implements OnInit {
     localStorage.removeItem('usuario');
     this.router.navigate(['/login']);
   }
+  menuColapsado = false;
+
+toggleMenu() {
+  this.menuColapsado = !this.menuColapsado;
+}
 }
