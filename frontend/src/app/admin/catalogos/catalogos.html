@@ -1,0 +1,52 @@
+<div class="catalog-container">
+
+  <h2>Gestión de Catálogos</h2>
+<button class="btn back" (click)="volver()">
+  ← Volver al panel
+</button>
+  <select [(ngModel)]="tablaSeleccionada"
+          (change)="cambiarTabla()">
+    <option *ngFor="let t of tablas"
+            [value]="t">
+      {{ t }}
+    </option>
+  </select>
+
+  <div class="form-box">
+    <input type="text"
+           [(ngModel)]="nuevoNombre"
+           placeholder="Nombre">
+
+    <button (click)="guardar()">
+      {{ editandoId ? 'Actualizar' : 'Guardar' }}
+    </button>
+
+    <button *ngIf="editandoId"
+            (click)="reset()">
+      Cancelar
+    </button>
+
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre / Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of lista">
+        <td>{{ obtenerId(item) }}</td>
+        <td>{{ obtenerNombre(item) }}</td>
+        <td>
+          <button (click)="editar(item)">Editar</button>
+          <button (click)="eliminar(item)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

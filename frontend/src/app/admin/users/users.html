@@ -4,19 +4,24 @@
   <aside class="sidebar">
     <h2 class="logo">Admin</h2>
 
-    <nav>
-      <a routerLink="/admin/users" routerLinkActive="active">
-        👤 Usuarios
-      </a>
+   <nav>
+  <a routerLink="/admin/users" routerLinkActive="active">
+    👤 Usuarios
+  </a>
 
-      <a routerLink="/admin/events" routerLinkActive="active">
-        📅 Eventos
-      </a>
+  <a routerLink="/admin/events" routerLinkActive="active">
+    📅 Eventos
+  </a>
 
-      <a (click)="logout()">
-        🚪 Cerrar sesión
-      </a>
-    </nav>
+  <!-- 🔥 NUEVO -->
+  <a routerLink="/admin/catalogos" routerLinkActive="active">
+    📚 Catálogos
+  </a>
+
+  <a (click)="logout()">
+    🚪 Cerrar sesión
+  </a>
+</nav>
   </aside>
 
   <!-- Main content -->

@@ -5,6 +5,7 @@ import { Users } from './admin/users/users';
 import { UserForm } from './admin/user-form/user-form';
 import { Events } from './admin/events/events';
 import { EventForm } from './admin/event-form/event-form';
+import { CatalogosComponent } from './admin/catalogos/catalogos';
 
 export const routes: Routes = [
   { path: 'login', component: Login },
@@ -17,5 +18,7 @@ export const routes: Routes = [
   { path: 'admin/events', component: Events },
 { path: 'admin/events/new', component: EventForm },
 { path: 'admin/events/edit/:id', component: EventForm },
+  { path: 'admin/catalogos', component: CatalogosComponent },
+
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

@@ -16,7 +16,7 @@ export class Users implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
-    private cdr: ChangeDetectorRef   // 👈 agregado
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -29,10 +29,8 @@ export class Users implements OnInit {
 
         console.log("Usuarios recibidos:", data);
 
-        // 👇 FORZAMOS nueva referencia
         this.usuarios = [...data];
 
-        // 👇 Forzamos detección de cambios
         this.cdr.detectChanges();
       },
       error: err => {

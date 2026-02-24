@@ -1,129 +1,16 @@
-/* Layout general */
+/* ===========================
+   Layout general
+=========================== */
 .admin-layout {
   display: flex;
   min-height: 100vh;
   background-color: #f4f6f8;
+  transition: all 0.3s ease;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #2fa89b;
-  color: white;
-  padding: 25px 15px;
-  display: flex;
-  flex-direction: column;
-}
-
-.logo {
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.sidebar nav a {
-  display: block;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.sidebar nav a:hover {
-  background-color: #249084;
-}
-
-.sidebar nav a.active {
-  background-color: #1f7a70;
-}
-
-/* Main */
-.main-content {
-  flex: 1;
-  padding: 40px;
-}
-
-/* Top bar */
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.top-bar h2 {
-  color: #2fa89b;
-}
-
-/* Tabla */
-.users-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.users-table thead {
-  background-color: #2fa89b;
-  color: white;
-}
-
-.users-table th,
-.users-table td {
-  padding: 12px 15px;
-  text-align: left;
-}
-
-.users-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-/* Estado */
-.activo {
-  color: #2fa89b;
-  font-weight: 500;
-}
-
-.inactivo {
-  color: #c0392b;
-  font-weight: 500;
-}
-
-/* Botones */
-.btn {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.btn.edit {
-  background-color: #2fa89b;
-  color: white;
-}
-
-.btn.edit:hover {
-  background-color: #249084;
-}
-
-.btn.create {
-  background-color: #2fa89b;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.btn.create:hover {
-  background-color: #249084;
-}
-/* Sidebar */
+/* ===========================
+   Sidebar
+=========================== */
 .sidebar {
   width: 230px;
   background: linear-gradient(180deg, #2fa89b, #249084);
@@ -132,16 +19,39 @@
   display: flex;
   flex-direction: column;
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+  transition: width 0.3s ease;
+}
+
+/* Header del sidebar */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
 }
 
 .logo {
-  margin-bottom: 35px;
-  text-align: center;
   font-weight: bold;
   font-size: 22px;
 }
 
-/* Links tipo botón */
+/* Botón toggle */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ===========================
+   Links tipo botón
+=========================== */
 .sidebar nav a {
   display: flex;
   align-items: center;
@@ -172,41 +82,119 @@
   font-weight: 600;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-/* Botón toggle */
-.sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
 
-.toggle-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.toggle-btn:hover {
-  transform: scale(1.1);
-}
-
-/* Transición */
-.sidebar {
-  transition: width 0.3s ease;
-}
-
-.layout.collapsed .sidebar {
+/* ===========================
+   Sidebar colapsado
+=========================== */
+.admin-layout.collapsed .sidebar {
   width: 80px;
 }
 
-/* Ocultar texto cuando colapsa */
-.layout.collapsed .sidebar nav a {
+.admin-layout.collapsed .sidebar nav a {
   justify-content: center;
+  gap: 0;
 }
 
-/* Ajustar contenido */
-.content {
+.admin-layout.collapsed .sidebar nav a span {
+  display: none;
+}
+
+/* ===========================
+   Main content
+=========================== */
+.main-content {
+  flex: 1;
+  padding: 40px;
   transition: all 0.3s ease;
+}
+
+/* ===========================
+   Top bar
+=========================== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.top-bar h2 {
+  color: #2fa89b;
+}
+
+/* ===========================
+   Tabla
+=========================== */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.users-table thead {
+  background-color: #2fa89b;
+  color: white;
+}
+
+.users-table th,
+.users-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.users-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.users-table tbody tr:hover {
+  background-color: #eaf7f5;
+}
+
+/* ===========================
+   Estado
+=========================== */
+.activo {
+  color: #2fa89b;
+  font-weight: 500;
+}
+
+.inactivo {
+  color: #c0392b;
+  font-weight: 500;
+}
+
+/* ===========================
+   Botones
+=========================== */
+.btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.btn.edit {
+  background-color: #2fa89b;
+  color: white;
+}
+
+.btn.edit:hover {
+  background-color: #249084;
+}
+
+.btn.create {
+  background-color: #2fa89b;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.btn.create:hover {
+  background-color: #249084;
 }

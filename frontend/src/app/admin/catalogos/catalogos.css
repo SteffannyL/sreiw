@@ -1,0 +1,97 @@
+
+:host {
+  display: block;
+  padding: 40px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+}
+
+
+h2 {
+  color: #2fa89b;
+  margin-bottom: 25px;
+  font-size: 26px;
+}
+
+/* =========================
+   Select e input
+========================= */
+select,
+input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* =========================
+   Botones iguales
+========================= */
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+button:not(.edit):not(.delete) {
+  background-color: #2fa89b;
+  color: white;
+}
+
+button:not(.edit):not(.delete):hover {
+  background-color: #249084;
+}
+
+.edit {
+  background-color: #2fa89b;
+  color: white;
+}
+
+.edit:hover {
+  background-color: #249084;
+}
+
+.delete {
+  background-color: #c0392b;
+  color: white;
+}
+
+.delete:hover {
+  background-color: #a93226;
+}
+
+/* =========================
+   Tabla igual que Users
+========================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #2fa89b;
+  color: white;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #eaf7f5;
+}
